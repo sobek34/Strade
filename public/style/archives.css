@@ -1,0 +1,41 @@
+.y_2021{
+    background: #009C48;
+    width: 50rem;
+    height: 2.5rem;
+    margin: 2rem;
+}
+.y_2020{
+    background: #009C48;
+    width: 50rem;
+    height: 2.5rem;
+    margin: 2rem;
+}
+.y_2019{
+    background: #009C48;
+    width: 50rem;
+    height: 2.5rem;
+    margin: 2rem;
+}
+.y_2018{
+    background: #009C48;
+    width: 50rem;
+    height: 2.5rem;
+    margin: 2rem;
+}
+button{
+    width: 2rem;
+    height: 2rem;
+    position: relative;
+    left: 45rem;
+}
+
+a{
+    color: #fff;
+    text-decoration: none;
+    display:block;
+
+}
+
+a:hover{
+    color: #5476a4;
+}

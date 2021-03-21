@@ -1,0 +1,70 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    height: 70rem;
+    width: 100rem;
+    font-family: 'Oswald', sans-serif;
+}
+.menu_admin{
+    display: flex;
+    flex-direction: row;
+    margin-top: 6rem;
+    margin-left: 5rem;
+    flex-wrap: wrap;
+  
+    
+    
+  
+}
+
+a{
+    color: #fff;
+    text-decoration: none;
+    display:block;
+    line-height: 5rem;
+    text-align: center;
+
+}
+
+a:hover{
+    color: #5476a4;
+    background: #FFF;
+}
+
+.menu_admin>a{
+    width: 30%;
+    height: 7rem;
+    text-align: center;
+    margin:0.5rem;
+    text-decoration: none;
+    padding-top: 5rem;
+    color: #fff;
+   
+}
+
+
+
+.menu_admin>a:hover{
+    box-shadow: inset 0 0 1em gold, 0 0 1em red;
+}
+#product{
+    background:#5476a4 ;
+    }
+
+#order{
+    background: #2378E8;
+}   
+
+#customers{
+    background: #17E1E8;
+}
+#ready_products{
+    background: #009C48;
+}
+#archivest{
+    background: #0CE872;
+}
+#sing_out{
+    background:#5476a4  ;
+
+}

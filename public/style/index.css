@@ -1,0 +1,48 @@
+body{display: flex;
+    flex-direction: row;
+    background: #d4dce9;
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
+}
+img{
+    width: 40vw;
+    height: 20vh;
+}
+.sing_in{
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 1rem 4rem;
+    
+    left: 35rem;
+    top: 10rem;
+    height: 65vh;
+}
+form{
+    margin: 1rem;
+}
+label{
+    font-size: 2rem
+}
+input{
+    width: 40rem;
+    border: 0;
+    display: block;
+    height: 3rem;
+    background: rgba(255,255,255, 0.5);
+}
+input:hover{
+    background: #5476a4 ;
+    border: 0.1rem solid #F00;
+}
+button{
+    background: #FFF;
+    border: 0;
+    width: 10vw;
+    height: 6vh;
+    margin-left: 15rem;
+    font-size: 2rem;
+}
+button:active{
+    border-bottom: 0.5rem black solid;
+    border-radius: 1rem;
+}

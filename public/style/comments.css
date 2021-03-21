@@ -1,0 +1,30 @@
+.comments{
+    margin-left: 20rem;
+    margin-top: 10rem;
+}
+.comments>h3{
+    background: #2378E8;
+    width: 20rem;
+}
+.position{
+    position: absolute;
+    left: 40rem;
+    background: #000;
+    color: #FFF;
+    border-bottom: black 1px solid;
+    border-radius: 2rem;
+}
+
+a{
+    color: #fff;
+    text-decoration: none;
+    display:block;
+    line-height: 5rem;
+    text-align: center;
+
+}
+
+a:hover{
+    color: #5476a4;
+    background: #FFF;
+}

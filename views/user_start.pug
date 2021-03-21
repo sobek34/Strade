@@ -1,0 +1,30 @@
+head
+  title Admin Panel
+  
+  link(rel='stylesheet' href='style/main_style.css')
+  link(rel='stylesheet' href='style/admin.css')
+  link(rel='preconnect' href='https://fonts.gstatic.com')
+  link(href='https://fonts.googleapis.com/css2?family=Oswald:wght@200;300&display=swap' rel='stylesheet')
+  link(href='https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap' rel='stylesheet')
+  
+.menu
+  img(src='img/logo1.svg' alt='logo')
+  nav
+    ul
+      a(href='/job_description')
+        li Job Description
+      a(href='/order_user')
+        li Order
+      a(href='/comments')
+        li Comments
+      br
+      br
+      a(href='/sing_out')
+      li Sing out
+.main
+  h1 Hi,User
+  .menu_admin
+    a#product(href='job_description') Job Description
+    a#order(href='order_user') Order
+    a#customers(href='comments') Comments
+    a#sing_out(href='sing_out') Sing out

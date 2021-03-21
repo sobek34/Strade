@@ -1,0 +1,72 @@
+head
+  title Customers
+  link(rel='stylesheet' href='style/main_style.css')
+  link(rel='stylesheet' href='style/customers.css')
+  link(rel='preconnect' href='https://fonts.gstatic.com')
+  link(href='https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap' rel='stylesheet')
+.menu
+  img(src='./img/logo1.svg' alt='logo')
+  nav
+    ul
+      li
+        a(href='\product') Product
+      li
+        a(href='\order') Order
+      li
+        a(href='\customers') Customers
+      li
+        a(href='\ ready_products') Ready Products
+      li
+        a(href='\archives') Archives
+      br
+      br
+      li
+        a(href='\sing_out') Sing out
+.main
+  h2 Add new customers
+  form
+    label Name company
+    input(type='text' name='name_company')
+    br
+    label NIP
+    input(type='number' name='nip')
+    br
+    label Adress
+    input(type='text' name='adress_company')
+    br
+    label Phone number
+    input(type='number' name='p_nr_company')
+    br
+    .buttom_customers
+      button(type='reset') Reset
+      button(type='submit') Save
+  .table_product
+    table
+      tr
+        th ID
+        th NAME COMPANY
+        th NIP
+        th ADRESS
+        th TELEFON
+        th NUMBER OF ORDERS
+      tr
+        td 1
+        td ERTOX
+        td 11112312312
+        td ul.Warszawska 1 Krak&oacute;w
+        td 43434343421
+        td 1
+      tr
+        td 2
+        td MORES
+        td 11112312312
+        td ul.JP 22 Krak&oacute;w
+        td 43434343421
+        td 1
+      tr
+        td 3
+        td NOKIA
+        td 11112312312
+        td aleja.Powstania 2 Krak&oacute;w
+        td 43434343421
+        td 5

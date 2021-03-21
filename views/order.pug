@@ -1,0 +1,97 @@
+head
+  title Order
+  link(rel='stylesheet' href='style/main_style.css')
+  link(rel='stylesheet' href='style/order.css')
+  link(rel='preconnect' href='https://fonts.gstatic.com')
+  link(href='https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap' rel='stylesheet')
+.menu
+  img(src='./img/logo1.svg' alt='logo')
+  nav
+    ul
+      li
+        a(href='\product') Product
+      li
+        a(href='\order') Order
+      li
+        a(href='\customers') Customers
+      li
+        a(href='\ ready_products') Ready Products
+      li
+        a(href='\archives') Archives
+      br
+      br
+      li
+        a(href='sing_out') Sing out
+.main
+  .add_order
+    h1 Add new order
+    form
+      label Customer
+      select#customer_order
+        option EROTOX
+        option MOTER
+        option NOKIA
+      br
+      label Data Start
+      input#data_start(type='text')
+      br
+      .buttom_order
+        button(type='reset') RESET
+        button(type='submit') SAVE
+  .table_product
+    br  
+    table
+      tr
+        th ID
+        th CUSTOMERS
+        th STATUS
+        th DATA_START
+        th DATA FINISH
+      tr
+        td 1
+        td NOKIA
+        td Start
+        td 01-05-2020
+        td 23-05-2020
+      tr
+        td 2
+        td NOKIA
+        td Finish
+        td 10-01-2021
+        td 13-02-2021
+      tr
+        td 3
+        td NOKIA
+        td Finish
+        td 11-02-2021
+        td 13-02-2021
+      tr
+        td 4
+        td NOKIA
+        td Prepare
+        td 11-02-2021
+        td 15-02-2021
+      tr
+        td 5
+        td NOKIA
+        td Prepare
+        td 01-05-2020
+        td 23-05-2020
+      tr
+        td 6
+        td NOKIA
+        td Start
+        td 01-05-2020
+        td 23-05-2020
+      tr
+        td 7
+        td NOKIA
+        td Start
+        td 01-05-2020
+        td 23-05-2020
+      tr
+        td 8
+        td NOKIA
+        td Start
+        td 01-05-2020
+        td 23-05-2020

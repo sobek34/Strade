@@ -1,0 +1,16 @@
+head
+  title STRADE
+  link(rel='stylesheet' href='style/index.css')
+  link(rel='preconnect' href='https://fonts.gstatic.com')
+  link(href='https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap' rel='stylesheet')
+.sing_in
+  .login
+    img(src='./img/logo1.svg')
+    form(action='/admin')
+      label(for='user_nick') User:
+      input#user_nick(type='text' name='user_nick')
+      br
+      label(for='user_password') Password:
+      input#user_password(type='password' name='user-pass')
+      br
+      button(type='submit') Sign in
