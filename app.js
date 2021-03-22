@@ -1,11 +1,23 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const pool = require("./db");
 const router = express.Router();
+const pg=require("./db")
+
 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static('public'))
+
+var ddb=pool; 
+ddb.query('Select * from users', (error, results) => {
+  if (error) {
+    throw error
+  }
+  console.log(results.rows)
+})
+
 
 router.get("/", (req, res) => {
   res.render("index");
