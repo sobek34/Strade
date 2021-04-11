@@ -7,15 +7,16 @@ body{display: flex;
 img{
     width: 40vw;
     height: 20vh;
+    margin-left: 5rem;
 }
 .sing_in{
     position: absolute;
     background: rgba(255, 255, 255, 0.3);
     border-radius: 1rem 4rem;
     
-    left: 35rem;
+    left: 20rem;
     top: 10rem;
-    height: 65vh;
+    height: 70vh;
 }
 form{
     margin: 1rem;
