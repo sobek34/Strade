@@ -6,8 +6,19 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 exports.findAll= (req, res) => {
   Customers.findAll().then(data=>{
     var id_customers=[]
-    for(var i=0;i<=1;i++){
-      id_customers.push(data[i].dataValues)
+    var len=0;
+    while(true){
+      if (data[len]==undefined){
+        break;
+      }
+      else{
+        len++;
+      }
+    }
+
+    for(var i=0;i<=len;i++){
+      console.log("sdad"+data[i].dataValues)
+      id_customers.push(data[i].customer)
     }
     
     console.log(id_customers);
@@ -15,6 +26,11 @@ exports.findAll= (req, res) => {
   })
 
 };
+
+
+
+
+
 
 exports.AddCustomers= async (req, res) => {
   const { name_company, nip, adress_company,nr } = req.body
