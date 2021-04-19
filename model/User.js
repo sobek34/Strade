@@ -24,6 +24,8 @@ const User = db.define('User', {
   }, {
    
   });
+
+  
  module.exports= User;
   /*
   var printerhash;

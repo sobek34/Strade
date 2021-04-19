@@ -26,7 +26,7 @@ app.use(express.static('public'))
 
 
 app.use('/',index);
-//app.use('/product',product());
+
 
 
 router.get("/admin", (req, res) => {
@@ -40,10 +40,6 @@ router.get("/user", (req, res) => {
 
 
 
-
-router.get("/order", (req, res) => {
-  res.render("order");
-});
 
 
 router.get("/ready_products", (req, res) => {

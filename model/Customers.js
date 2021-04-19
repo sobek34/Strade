@@ -1,7 +1,7 @@
 const  Sequelize=require('sequelize');
 const DataTypes=require('sequelize');
 const db=require('../db.js');
-
+const Order=require("./Order")
 
 const Customers = db.define('customer', {
     
@@ -34,7 +34,11 @@ const Customers = db.define('customer', {
     
   }, {
    
+   
   });
+
+  Customers.hasMany(Order,{foreignKey: 'id_customers'});
+  Order.belongsTo(Customers,{foreignKey: 'id_customers'});
 
   Customers.sync().then(()=>
   console.log("create table"))

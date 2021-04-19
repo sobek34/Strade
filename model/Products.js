@@ -1,14 +1,17 @@
-import  Sequelize   from 'sequelize';
-import DataTypes   from 'sequelize';
-import db from '../db.js';
-
+const { Sequelize, DataTypes  } = require('sequelize');
+const db=require('../db.js');
+const { model } = require('../db.js');
 
 const Product = db.define('product', {
     
     id_product:{
       type: Sequelize.INTEGER,
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
+      get(){
+        const rawValue = this.getDataValue(id_order);
+        return rawValue ? rawValue.toUpperCase() : null;
+      }
     },
     id_order:{
         type: Sequelize.INTEGER,
@@ -32,7 +35,7 @@ const Product = db.define('product', {
         defaultValue: new Date()
     },
     data_finish:{
-        type:DataTypes.DATE,
+        type:Sequelize.DATEONLY,
 
     },  
     ready:{
@@ -46,15 +49,7 @@ const Product = db.define('product', {
   }, {
    
   });
-  const Fixture = async () => {
-    try {
-      await sequelize.sync({ force: true });
-      await Participants.create(existingUserCredentials);
-    } catch (err) {
-      logger.error(err);
-      throw err;
-    }
-  };
-  Fixture()
-  
-  export default Product;
+  Product.sync().then(()=>
+  console.log("create table"))
+
+ module.exports= Product;

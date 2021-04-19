@@ -3,7 +3,8 @@ const bodyParser = require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 const login =require('../controller/User_controller.js')
 const customer =require('../controller/Customers_controller.js')
-
+const order =require('../controller/Order_controller.js')
+const product =require('../controller/Product_controller.js')
 
 
 
@@ -30,12 +31,11 @@ const customer =require('../controller/Customers_controller.js')
           });
        });
 
-      app.get("/product", (req, res) => {
-        console.log(product.id_product)
-        res.render("product");
-      });
+      app.get("/product", product.findAll)
 
       app.get("/customers", customer.findAll)
       app.post("/customers",urlencodedParser,customer.AddCustomers)
+
+      app.get("/order", order.findAll)
 
    module.exports=app;

@@ -37,62 +37,15 @@
         <th>DATA_START</th>
         <th>DATA FINISH</th>
       </tr>
+      {{#each cust}}
       <tr>
-        <td>1</td>
-        <td>NOKIA</td>
-        <td>Start</td>
-        <td>01-05-2020</td>
-        <td>23-05-2020</td>
+        <td>{{this.id_order}}</td>
+        <td>{{this.name_company}}</td>
+        <td>{{this.status}}</td>
+        <td>{{this.data_start}}</td>
+        <td>{{this.data_finish}}</td>
       </tr>
-      <tr>
-        <td>2</td>
-        <td>NOKIA</td>
-        <td>Finish</td>
-        <td>10-01-2021</td>
-        <td>13-02-2021</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>NOKIA</td>
-        <td>Finish</td>
-        <td>11-02-2021</td>
-        <td>13-02-2021</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>NOKIA</td>
-        <td>Prepare</td>
-        <td>11-02-2021</td>
-        <td>15-02-2021</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>NOKIA</td>
-        <td>Prepare</td>
-        <td>01-05-2020</td>
-        <td>23-05-2020</td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>NOKIA</td>
-        <td>Start</td>
-        <td>01-05-2020</td>
-        <td>23-05-2020</td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td>NOKIA</td>
-        <td>Start</td>
-        <td>01-05-2020</td>
-        <td>23-05-2020</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>NOKIA</td>
-        <td>Start</td>
-        <td>01-05-2020</td>
-        <td>23-05-2020</td>
-      </tr>
+      {{/each}}
     </table>
   </div>
 </div>
