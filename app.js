@@ -8,8 +8,10 @@ const path =require("path");
 
 const router = express.Router();
 const bodyParser=require('body-parser')
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 var Sequelize =require('sequelize');
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 
 
@@ -41,17 +43,9 @@ router.get("/user", (req, res) => {
 
 
 
-router.get("/order", (req, res) => {
-  res.render("order");
-});
 
 
-router.get("/ready_products", (req, res) => {
-  res.render("ready_products");
-});
-router.get("/archives", (req, res) => {
-  res.render("archives");
-});
+
 
 router.get("/job_description", (req, res) => {
   res.render("job_description");
@@ -64,7 +58,12 @@ router.get("/comments", (req, res) => {
 router.get("/order_user", (req, res) => {
   res.render("order_user");
 });
-
+router.get("/archives", (req, res) => {
+  res.render("archives");
+});
+router.delete('/del',(req, res)=>{
+  res.send("jessss")
+})
 
 
 

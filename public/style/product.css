@@ -1,7 +1,7 @@
 .main{
     display: flex;
     flex-direction: column;
-    height: 40rem;
+    height: 70rem;
 }
 
 form {
@@ -67,4 +67,8 @@ a{
 
 a:hover{
     color: #5476a4;
+}
+.btn-danger{
+    position: relative;
+    width: 4rem;
 }

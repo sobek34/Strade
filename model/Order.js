@@ -1,13 +1,13 @@
 const { Sequelize, DataTypes  } = require('sequelize');
 const db=require('../db.js');
 const { model } = require('../db.js');
-
+const Customers=require('../model/Customers')
 const Order = db.define('order', {
     
     id_order:{
       type: Sequelize.INTEGER,
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
     },
     id_customers:{
         type: Sequelize.INTEGER,
@@ -30,7 +30,14 @@ const Order = db.define('order', {
         type:DataTypes.DATE,
 
     },
+    archives:{
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,    
+  }
+  
   }, {
+
    
   });
-  module.exports=Customers;
+  
+  module.exports=Order;

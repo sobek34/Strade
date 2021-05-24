@@ -4,14 +4,17 @@
   <link rel="stylesheet" href="style/product.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+  
 </head>
+
+
 <div class="menu"><img src="./img/logo1.svg" alt="logo">
   <nav>
     <ul>
       <li><a href="\product">Product</a></li>
       <li><a href="\order">Order</a></li>
       <li><a href="\customers">Customers</a></li>
-      <li><a href="\ ready_products">Ready Products</a></li>
+      <li><a href="\ready_products">Ready Products</a></li>
       <li><a href="\archives">Archives</a></li><br><br>
       <li><a href="sing_out">Sing out</a></li>
     </ul>
@@ -21,77 +24,89 @@
   <h1>Product</h1>
   <p>{{data}}</p>
   <div class="search">
-    <form><input name="str_search" type="text"><select id="type_search_item" name="type_search_item">
-        <option value="id">id</option>
+    <form action="/search_product" method="POST">
+      <input name="str_search" type="text"><select id="type_search_item" name="type_search_item">
+        <option value="id_product">id_product</option>
         <option value="model">model</option>
-        <option value="customers">customers</option>
+        <option value="customer">customer</option>
       </select><button id="search_button"><img src="./img/transparency.svg" alt="search"></button></form>
   </div>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  
   <div class="table_product">
     <table>
       <tr>
         <th>ID</th>
         <th>MODEL</th>
-        <th>CUSTOMERS</th>
+        <th>ID_ORDER</th>
         <th>DATA_START</th>
         <th>DATA FINISH</th>
+        <th>DELETE</th>
       </tr>
+       {{#each product}}
       <tr>
-        <td>1</td>
-        <td>Standard</td>
-        <td>EROTX</td>
-        <td>01-05-2020</td>
-        <td>23-05-2020</td>
+        <td>{{this.id_product}}</td>
+        <td>{{this.model}}</td>
+        <td>{{this.id_order}}</td>
+        <td>{{this.data_start}}</td>
+        <td>{{this.data_finish}}</td>
+        <td></td>
+        
       </tr>
-      <tr>
-        <td>2</td>
-        <td>VORT</td>
-        <td>MOTER</td>
-        <td>10-01-2021</td>
-        <td>13-02-2021</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>VORT</td>
-        <td>NOKIA</td>
-        <td>11-02-2021</td>
-        <td>13-02-2021</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>MORDENA</td>
-        <td>NOKIA</td>
-        <td>11-02-2021</td>
-        <td>15-02-2021</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>Standard</td>
-        <td>EROTX</td>
-        <td>01-05-2020</td>
-        <td>23-05-2020</td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>Standard</td>
-        <td>EROTX</td>
-        <td>01-05-2020</td>
-        <td>23-05-2020</td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td>Standard</td>
-        <td>EROTX</td>
-        <td>01-05-2020</td>
-        <td>23-05-2020</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>Standard</td>
-        <td>EROTX</td>
-        <td>01-05-2020</td>
-        <td>23-05-2020</td>
-      </tr>
+    {{/each}}
+       
     </table>
   </div>
+  <div class="add_product">
+  <h2>Add product</h2>
+  <form action="/add_product" method="POST">
+      <label>Model</label><input name="model" type="text"><br>
+      <label>ID Order</label><input name="id_order" type="text"><br>
+      <label>Data start</label><input name="data_start" type="text"><br>
+      
+      </select><button id="add_button">save</button>
+      </form>
+
+ </div>
+
+
+  <div class="delete_product" >
+  <h2>Delete product</h2>
+      <form action="/product"> 
+      <label>ID</label><input id="id_del" name="id_del" type="text"><br>
+      <button id="delete_button">Delete</button>
+      </form>
+
+ </div>
+  </div>
 </div>
+
+ <script type="text/javascript">
+
+
+ 
+        $(document).ready(function () {
+            $('#delete_button').click(function () {
+               
+               var data = {};
+					data.id = document.getElementById('id_del').value
+					
+          console.log(JSON.stringify(data))
+                    $.ajax({
+                    url: "/del",
+                    type: "DELETE",
+                    contentType: "application/json",
+                     data: JSON.stringify(data),
+                      dataType: 'json',
+                    success: function(data) {
+                            console.log('success');
+                            console.log(JSON.stringify(data));
+                        }
+                });
+            });
+        });
+        
+    </script>
+
+<script type="text/javascript" src="js/Delete_product.js">
+</script>

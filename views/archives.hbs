@@ -11,7 +11,7 @@
       <li><a href="\product">Product</a></li>
       <li><a href="\order">Order</a></li>
       <li><a href="\customers">Customers</a></li>
-      <li><a href="\ ready_products">Ready Products</a></li>
+      <li><a href="\ready_products">Ready Products</a></li>
       <li><a href="\archives">Archives</a></li><br><br>
       <li><a href="sing_out">Sing out</a></li>
     </ul>
@@ -19,16 +19,106 @@
 </div>
 <div class="main">
   <h2>Archives</h2>
-  <div class="y_2021">2021<button id="b1" type="button"><img src="/img/down-arrow.svg"></button>
-    <div class="table_2021"></div>
+  <div class="y_data">2021<button id="b1" type="button"><img src="/img/down-arrow.svg"></button>
+    <div class="table_2021">
+     <table>
+      <tr>
+        <th>ID</th>
+        <th>MODEL</th>
+        <th>CUSTOMER</th>
+        <th>DATA_START</th>
+        <th>DATA FINISH</th>
+        
+      </tr>
+       {{#each y21}}
+      <tr>
+        <td>{{id_order}}</td>
+        <td>{{this.id_customers}}</td>
+        <td>{{this.data_start}}</td>
+        <td>{{this.data_finish}}</td>
+        <td></td>
+        
+      </tr>
+    {{/each}}
+       
+    </table>
+    </div>
   </div>
-  <div class="y_2020">2020<button id="b2" type="button"><img src="/img/down-arrow.svg"></button>
-    <div class="table_2020"></div>
+  <div class="y_data">2020<button id="b2" type="button"><img src="/img/down-arrow.svg"></button>
+    <div class="table_2020">
+      <table>
+      <tr>
+        <th>ID</th>
+        <th>MODEL</th>
+        <th>CUSTOMER</th>
+        <th>DATA_START</th>
+        <th>DATA FINISH</th>
+        
+      </tr>
+       {{#each y20}}
+      <tr>
+        <td>{{id_order}}</td>
+        <td>{{this.id_customers}}</td>
+        <td>{{this.data_start}}</td>
+        <td>{{this.data_finish}}</td>
+        <td></td>
+        
+      </tr>
+    {{/each}}
+       
+    </table>
+
+    </div>
   </div>
-  <div class="y_2019">2019<button id="b3" type="button"><img src="/img/down-arrow.svg"></button>
-    <div class="table_2019"></div>
+  <div class="y_data">2019<button id="b3" type="button"><img src="/img/down-arrow.svg"></button>
+    <div class="table_2019">
+      <table>
+      <tr>
+        <th>ID</th>
+        <th>MODEL</th>
+        <th>CUSTOMER</th>
+        <th>DATA_START</th>
+        <th>DATA FINISH</th>
+        
+      </tr>
+       {{#each y19}}
+      <tr>
+        <td>{{id_order}}</td>
+        <td>{{this.id_customers}}</td>
+        <td>{{this.data_start}}</td>
+        <td>{{this.data_finish}}</td>
+        <td></td>
+        
+      </tr>
+    {{/each}}
+       
+    </table>
+    </div>
   </div>
-  <div class="y_2018">2018<button id="b4" type="button"><img src="/img/down-arrow.svg"></button>
-    <div class="table_2018"></div>
+  <div class="y_data">2018<button id="b4" type="button"><img src="/img/down-arrow.svg"></button>
+    <div class="table_2018">
+<table>
+      <tr>
+        <th>ID</th>
+        <th>MODEL</th>
+        <th>CUSTOMER</th>
+        <th>DATA_START</th>
+        <th>DATA FINISH</th>
+        
+      </tr>
+       {{#each y18}}
+      <tr>
+        <td>{{id_order}}</td>
+        <td>{{this.id_customers}}</td>
+        <td>{{this.data_start}}</td>
+        <td>{{this.data_finish}}</td>
+        <td></td>
+        
+      </tr>
+    {{/each}}
+       
+    </table>
+
+    </div>
   </div>
 </div>

@@ -32,15 +32,19 @@ logger("new "+hash('cadmin','10').hashedpassword)
 const Login= async function(username,passw){
   var hassword=hash(passw,'10').hashedpassword
   console.log("pass"+hassword)
-  const UserProfile= await modelUser.findOne({ where: { name: username } });
-  if (UserProfile==null){
+
+  const UserProfile= await modelUser.findOne({attributes: ['id_user','password'], where: { name: username } });
+  var array_user=[]
+  array_user.push(UserProfile.dataValues.id_user)
+  console.log(array_user)
+  if (array_user==[]){
     console.log("not find")
     return 0
   }
   else{
   if (UserProfile.password==hassword){
       console.log("pass good")
-        return 1
+        return array_user
     }
     else{
         console.log('nennnn')

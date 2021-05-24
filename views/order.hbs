@@ -11,7 +11,7 @@
       <li><a href="\product">Product</a></li>
       <li><a href="\order">Order</a></li>
       <li><a href="\customers">Customers</a></li>
-      <li><a href="\ ready_products">Ready Products</a></li>
+      <li><a href="\ready_products">Ready Products</a></li>
       <li><a href="\archives">Archives</a></li><br><br>
       <li><a href="sing_out">Sing out</a></li>
     </ul>
@@ -20,11 +20,13 @@
 <div class="main">
   <div class="add_order">
     <h1>Add new order</h1>
-    <form><label>Customer</label><select id="customer_order">
-        <option>EROTOX</option>
-        <option>MOTER</option>
-        <option>NOKIA</option>
-      </select><br><label>Data Start</label><input id="data_start" type="text"><br>
+    <form action="/order" method="POST">
+      <label>Customer</label><select id="customer_order" name="customer_order">
+        {{#each company}}
+        <option>{{this.name_company}}</option>
+      
+        {{/each}}
+      </select><br><label>Data Start</label><input id="data_start" type="text" name="data_start"><br>
       <div class="buttom_order"><button type="reset">RESET</button><button type="submit">SAVE</button></div>
     </form>
   </div>
@@ -37,62 +39,16 @@
         <th>DATA_START</th>
         <th>DATA FINISH</th>
       </tr>
+        {{#each cust}}
       <tr>
-        <td>1</td>
-        <td>NOKIA</td>
-        <td>Start</td>
-        <td>01-05-2020</td>
-        <td>23-05-2020</td>
+        <td>{{this.id_order}}</td>
+        <td>{{this.customer.dataValues.name_company}}</td>
+        <td>{{this.status}}</td>
+        <td>{{this.data_start}}</td>
+        <td>{{this.data_finish}}</td> 
       </tr>
-      <tr>
-        <td>2</td>
-        <td>NOKIA</td>
-        <td>Finish</td>
-        <td>10-01-2021</td>
-        <td>13-02-2021</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>NOKIA</td>
-        <td>Finish</td>
-        <td>11-02-2021</td>
-        <td>13-02-2021</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>NOKIA</td>
-        <td>Prepare</td>
-        <td>11-02-2021</td>
-        <td>15-02-2021</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>NOKIA</td>
-        <td>Prepare</td>
-        <td>01-05-2020</td>
-        <td>23-05-2020</td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>NOKIA</td>
-        <td>Start</td>
-        <td>01-05-2020</td>
-        <td>23-05-2020</td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td>NOKIA</td>
-        <td>Start</td>
-        <td>01-05-2020</td>
-        <td>23-05-2020</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>NOKIA</td>
-        <td>Start</td>
-        <td>01-05-2020</td>
-        <td>23-05-2020</td>
-      </tr>
+    {{/each}}
+      
     </table>
   </div>
 </div>

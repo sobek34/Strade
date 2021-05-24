@@ -1,5 +1,6 @@
 const Customers=require('../model/Customers')
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const Order = require('../model/Order');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
@@ -16,9 +17,9 @@ exports.findAll= (req, res) => {
       }
     }
 
-    for(var i=0;i<=len;i++){
+    for(var i=0;i<len;i++){
       console.log("sdad"+data[i].dataValues)
-      id_customers.push(data[i].customer)
+      id_customers.push(data[i].dataValues)
     }
     
     console.log(id_customers);
@@ -35,7 +36,7 @@ exports.findAll= (req, res) => {
 exports.AddCustomers= async (req, res) => {
   const { name_company, nip, adress_company,nr } = req.body
   
-  console.log("name"+name_company+"  nip_nr"+nip+" adress"+adress_company+" ph"+nr )
-  const cut= await Customers.create({name_company:name_company,nip:nip,adres:adress_company,phone_number:nr}).then(gig => res.render('/customers'))
+  
+  const cut= await Customers.create({name_company:name_company,nip:nip,adres:adress_company,phone_number:nr}).then(gig => res.redirect('customers'))
   
 };

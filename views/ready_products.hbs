@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="style/ready_products.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 </head>
 <div class="menu"><img src="./img/logo1.svg" alt="logo">
   <nav>
@@ -29,39 +30,22 @@
     <table>
       <tr>
         <th>ID</th>
-        <th>MODEL</th>
         <th>CUSTOMERS</th>
         <th>ID_ORDER</th>
         <th>SEND</th>
       </tr>
+      {{#each order}}
       <tr>
-        <td>1</td>
-        <td>STANDARD</td>
-        <td>ERTOX</td>
-        <td>1</td>
-        <td><button type="submit">SEND</button></td>
+        <td>{{this.id_order}}</td>
+        <td>{{this.name_company}}</td>
+        <td>{{this.id_order}}</td>
+        <td><form action="\ready_products"><button type="submit" onclick="reply_click({{this.id_order}})" >SEND</button></form></td>
       </tr>
-      <tr>
-        <td>2</td>
-        <td>VORT</td>
-        <td>MORES</td>
-        <td>1</td>
-        <td><button type="submit">SEND</button></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>NOKIA</td>
-        <td>11112312312</td>
-        <td>3</td>
-        <td><button type="submit">SEND</button></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>NOKIA</td>
-        <td>11112312312</td>
-        <td>2</td>
-        <td><button type="submit">SEND</button></td>
-      </tr>
+      {{/each}}
+      
     </table>
   </div>
 </div>
+<script type="text/javascript" src="js/Ready_product.js">
+
+</script>

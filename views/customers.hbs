@@ -11,7 +11,7 @@
       <li><a href="\product">Product</a></li>
       <li><a href="\order">Order</a></li>
       <li><a href="\customers">Customers</a></li>
-      <li><a href="\ ready_products">Ready Products</a></li>
+      <li><a href="\ready_products">Ready Products</a></li>
       <li><a href="\archives">Archives</a></li><br><br>
       <li><a href="\sing_out">Sing out</a></li>
     </ul>
@@ -54,5 +54,9 @@
       </tr>
     {{/each}}
     </table>
+    <form action="/addCustomer" method="GET">
+    <label>ID</label><input name="id_customer" type="text"> 
+    <button type="submit">Send</button>
+    </form>
   </div>
 </div>

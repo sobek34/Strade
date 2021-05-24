@@ -1,7 +1,6 @@
-import  Sequelize   from 'sequelize';
-import DataTypes   from 'sequelize';
-import db from '../db.js';
-
+const  Sequelize=require('sequelize');
+const DataTypes=require('sequelize');
+const db=require('../db.js');
 
 const Product = db.define('product', {
     
@@ -32,14 +31,16 @@ const Product = db.define('product', {
         defaultValue: new Date()
     },
     data_finish:{
-        type:DataTypes.DATE,
+      type: Sequelize.DATEONLY,
 
     },  
     ready:{
-        type: DataTypes.BOOLEAN   
+        type: DataTypes.BOOLEAN,  
+        defaultValue: false, 
     },
     archives:{
-        type: DataTypes.BOOLEAN   
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,    
     }
    
    
@@ -57,4 +58,4 @@ const Product = db.define('product', {
   };
   Fixture()
   
-  export default Product;
+  module.exports=Product;
