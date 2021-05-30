@@ -1,6 +1,9 @@
 const modelProduct =require('../model/Products.js');
 const bodyParser = require('body-parser');
 const Product = require('../model/Products.js');
+const session = require('express-session');
+
+
 
 
 exports.findAll= (req, res) => {
@@ -92,11 +95,23 @@ exports.findAll= (req, res) => {
           id_product: id_del
         }
       }).then(gig => res.render('product')).catch(gig => console.log("error"));
+    };
       
       
+      exports.AddComments= async (req, res) => {
+        const {id_product,comments} = req.body
+        console.log("id"+id_product)
+        console.log("coments"+comments)
+        const cut= await Product.update({comments:comments},{where:{id_product:id_product}}).then(gig => res.render('comments',{mess:"Add comments"}))
+        
+      };
+
+
+
+
+
       
-      
-  };
+  
 
 
  

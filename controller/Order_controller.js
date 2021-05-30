@@ -79,5 +79,16 @@ exports.findAll= (req, res) => {
   });
 }
   
+exports.AddFinishDate= async (req, res) => {
+  const { id_order, date_finish } = req.body
+
+  console.log(id_order)
+  console.log(date_finish)
+  await Order.update({ data_finish:date_finish,status:"Finish" }, {
+    where: {
+      id_order: id_order
+    }
+  }).then(data=> {res.redirect('order')}).catch(err=>{console.log("error")});
 
 
+}

@@ -20,23 +20,24 @@
 <div class="main">
   <h2>Archives</h2>
   <div class="y_data">2021<button id="b1" type="button"><img src="/img/down-arrow.svg"></button>
+    
     <div class="table_2021">
      <table>
       <tr>
         <th>ID</th>
         <th>MODEL</th>
-        <th>CUSTOMER</th>
+        <th>ID_CUSTOMER</th>
         <th>DATA_START</th>
         <th>DATA FINISH</th>
         
       </tr>
        {{#each y21}}
       <tr>
-        <td>{{id_order}}</td>
+       <td>{{this.id_order}}</td>
+        <td></td>
         <td>{{this.id_customers}}</td>
         <td>{{this.data_start}}</td>
         <td>{{this.data_finish}}</td>
-        <td></td>
         
       </tr>
     {{/each}}
@@ -50,18 +51,21 @@
       <tr>
         <th>ID</th>
         <th>MODEL</th>
-        <th>CUSTOMER</th>
+        <th>ID_CUSTOMER</th>
         <th>DATA_START</th>
         <th>DATA FINISH</th>
         
       </tr>
        {{#each y20}}
       <tr>
-        <td>{{id_order}}</td>
+        
+     <td>{{this.id_order}}</td>
+        <td></td>
         <td>{{this.id_customers}}</td>
         <td>{{this.data_start}}</td>
         <td>{{this.data_finish}}</td>
-        <td></td>
+        
+      </tr>
         
       </tr>
     {{/each}}
@@ -76,18 +80,18 @@
       <tr>
         <th>ID</th>
         <th>MODEL</th>
-        <th>CUSTOMER</th>
+        <th>ID_CUSTOMER</th>
         <th>DATA_START</th>
         <th>DATA FINISH</th>
         
       </tr>
        {{#each y19}}
       <tr>
-        <td>{{id_order}}</td>
+          <td>{{this.id_order}}</td>
+        <td></td>
         <td>{{this.id_customers}}</td>
         <td>{{this.data_start}}</td>
         <td>{{this.data_finish}}</td>
-        <td></td>
         
       </tr>
     {{/each}}
@@ -101,18 +105,18 @@
       <tr>
         <th>ID</th>
         <th>MODEL</th>
-        <th>CUSTOMER</th>
+        <th>ID_CUSTOMER</th>
         <th>DATA_START</th>
         <th>DATA FINISH</th>
         
       </tr>
        {{#each y18}}
       <tr>
-        <td>{{id_order}}</td>
+         <td>{{this.id_order}}</td>
+        <td></td>
         <td>{{this.id_customers}}</td>
         <td>{{this.data_start}}</td>
         <td>{{this.data_finish}}</td>
-        <td></td>
         
       </tr>
     {{/each}}

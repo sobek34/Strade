@@ -1,21 +1,21 @@
-const Sequelize=require('sequelize');
-const DataTypes =require ('sequelize');
-const db =require('../db.js') ;
-
+const {Sequelize, Model, DataTypes } = require('sequelize');
+const db = require('../db');
 
 
 const User_Role = db.define('user_role', {
+    
+  id_role:{
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+  },
 
-    id_role:{
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
-      },
+  id_user: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
+ 
+  
+})
 
-    id_user: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-
-    })
-    module.exports=User_Role ;
+module.exports =User_Role;

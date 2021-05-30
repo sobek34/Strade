@@ -1,7 +1,7 @@
 var hbs = require('express-handlebars');
 
 const index= require('./routes/index_routes.js')
-
+const session = require('express-session');
 const express= require("express");
 const app = express();
 const path =require("path");
@@ -65,7 +65,7 @@ router.delete('/del',(req, res)=>{
   res.send("jessss")
 })
 
-
+app.use(session({secret: 'ssshhhhh'}));
 
 app.use("/", router);
 app.listen(process.env.port || 3000);

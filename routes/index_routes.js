@@ -1,4 +1,5 @@
 const  Router= require('express');
+const session = require('express-session');
 
 const bodyParser = require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
@@ -9,7 +10,9 @@ const product= require('../controller/Product_controller.js')
 const order= require('../controller/Order_controller.js')
 const ready_product= require('../controller/ReadyProduct_controller.js')
 const archives= require('../controller/Archives_controller.js')
-const user_role=require('../controller/User_Role_controller.js');
+const user_role= require("../controller/User_Role_controller.js")
+const product_worker=require('../controller/Product_worker_controller.js');
+const reg_user  = require('../controller/registration_controller.js');
 
 
 
@@ -18,49 +21,61 @@ const user_role=require('../controller/User_Role_controller.js');
 
     const app = Router();
    
-
+    app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
     
     app.use(Router.json())
     
-
+    var sess
     app.get("/", (req, res) => {
         res.render("index");
+        
+        
       });
       
-    app.post("/",urlencodedParser, async (req, res) => {
+      app.post("/",urlencodedParser, async (req, res) => {
+        var sess 
+        sess=req.session;
         console.log(req.body)
         var chechlog=login(req.body.user_nick,req.body.user_pass)
         console.log(chechlog)
+        var value1
         chechlog.then((value) =>{
-          var id_roles
+          
           console.log("@@@@"+value)
-          var user_roles=user_role(value)
-          user_roles.then((id_role)=>{
-          id_roles=id_role
-          if(value){
-            if(id_roles==1){
-            res.render('admin_start')
-            }
-            if(id_roles==2){
-              res.render('product')
-            }
+          const data= user_role.User_role_check(value).then((data1)=>{
+          if(data1==1){
+            res.render("admin_start")
           }
-        
-        
-        }) 
-          });
-       });
+          else{
+            res.render("user_start")
+          }
+
+          }
+          )  
+        });
+       
+       
+       
+        });
+    
+       app.get("/reg_user",reg_user.reg_user)
+       app.post("/reg_new",urlencodedParser,reg_user.reg_new)
 
       app.get("/product", product.findAll)
       app.post("/search_product",urlencodedParser, product.serach_product)
       app.post("/add_product",urlencodedParser, product.AddProduct)
       app.delete("/del", urlencodedParser, product.DeleteProduct)
+      
+      app.post("/comments",urlencodedParser,product.AddComments)
+
+      app.get("/product_worker",product_worker.print)
+      app.post("/load_product",urlencodedParser,product_worker.load_product)
 
       
      
 
     
-
+      
         
         
       app.get("/customers", customer.findAll)
@@ -70,7 +85,7 @@ const user_role=require('../controller/User_Role_controller.js');
         console.log("@@@@@@@@"+req.body.id_customer)
       } )
       app.get("/order",order.findAll)
-      
+      app.post("/data_finish",urlencodedParser,order.AddFinishDate)
       app.post("/order",urlencodedParser,order.AddOrder)
 
 
@@ -79,6 +94,6 @@ const user_role=require('../controller/User_Role_controller.js');
       app.get("/archives",archives.findAll)
 
 
-
+    
 
    module.exports=app;
