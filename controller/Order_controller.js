@@ -1,7 +1,10 @@
 const Order=require('../model/Order')
 const bodyParser = require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
-const Customers=require('../model/Customers')
+const Customers=require('../model/Customers');
+const Product = require('../model/Products');
+var randomstring = require("randomstring");
+
 
 
 exports.findAll= (req, res) => {
@@ -73,8 +76,9 @@ exports.findAll= (req, res) => {
         console.log("sdad"+data[i].dataValues.id_customers)
         id_company.push(data[i].dataValues.id_customers)
       }
+      var key_order=randomstring.generate(7);
       
-      const save_order=  Order.create({id_customers:id_company,name_company:customer_order,data_start:data_start}).then(gig => res.redirect('order'))
+      const save_order=  Order.create({id_customers:id_company,name_company:customer_order,data_start:data_start,status:"Start",key:key_order}).then(gig => res.redirect('order'))
     
   });
 }
@@ -90,5 +94,31 @@ exports.AddFinishDate= async (req, res) => {
     }
   }).then(data=> {res.redirect('order')}).catch(err=>{console.log("error")});
 
+}
+
+exports.PrintProductOrder= async (req,res) =>{
+  const{ id_Order }=req.body
+  Order.findAll({include: Product,where:{id_order:id_Order}}).then(data=>{
+    prod=data[0].dataValues.products
+    id_ord=data[0].dataValues.id_order
+    key_order=data[0].dataValues.key
+    console.log("id",id_ord)
+    var len=0
+    while(true){
+      if (prod[len]==undefined){
+        break
+      }
+      len++;
+    }
+    var product=[]
+    
+    for(var i=0;i<len;i++){
+    product.push(prod[i].dataValues)
+    }
+    console.log("#",product[0])
+  res.render("order_product",{id_order:id_ord,key:key_order,product_model:product})
+  
+  
+  })
 
 }

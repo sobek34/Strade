@@ -87,6 +87,7 @@ const reg_user  = require('../controller/registration_controller.js');
       app.get("/order",order.findAll)
       app.post("/data_finish",urlencodedParser,order.AddFinishDate)
       app.post("/order",urlencodedParser,order.AddOrder)
+      app.post("/order_product",urlencodedParser,order.PrintProductOrder)
 
 
       app.get("/ready_products",ready_product.findAll)
