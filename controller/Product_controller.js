@@ -7,6 +7,13 @@ const session = require('express-session');
 
 
 exports.findAll= (req, res) => {
+  var sess 
+  sess=req.session;
+  if(sess.role!=1){
+    
+    res.redirect("error")
+    return -1;
+  }  
     modelProduct.findAll().then(data=>{
       var id_product=[]
       var len=0;
@@ -31,6 +38,14 @@ exports.findAll= (req, res) => {
   };
 
   exports.serach_product= async (req, res) => {
+    var sess 
+    sess=req.session;
+    if(sess.role!=1){
+      
+      res.redirect("error")
+      return -1;
+    }  
+   
       const {str_search,type_search_item}=req.body
       if(type_search_item=='id_product')
       modelProduct.findAll( {
@@ -78,6 +93,14 @@ exports.findAll= (req, res) => {
 
 
     exports.AddProduct= async (req, res) => {
+      var sess 
+    sess=req.session;
+    if(sess.role!=1){
+      
+      res.redirect("error")
+      return -1;
+    }  
+     
       const { model, id_order, data_start} = req.body
       console.log("model"+model+ " custom"+id_order+" data"+ data_start)
       
@@ -87,6 +110,14 @@ exports.findAll= (req, res) => {
 
     
     exports.DeleteProduct= async (req, res) => {
+      var sess 
+    sess=req.session;
+    if(sess.role!=1){
+      
+      res.redirect("error")
+      return -1;
+    }  
+    
       var id_delUser=JSON.stringify(req.body.id);
       var id_del=id_delUser.slice(1,(id_delUser.length-1))
       console.log('body: ' + id_del);
@@ -99,6 +130,14 @@ exports.findAll= (req, res) => {
       
       
       exports.AddComments= async (req, res) => {
+        var sess 
+    sess=req.session;
+    if(sess.role!=1){
+      
+      res.redirect("error")
+      return -1;
+    }  
+     
         const {id_product,comments} = req.body
         console.log("id"+id_product)
         console.log("coments"+comments)
@@ -106,7 +145,17 @@ exports.findAll= (req, res) => {
         
       };
 
+exports.PutProduct=async (req, res) => {
+  
+  const {id,model,id_order,data_start}=req.body
+  await Product.update({ model:model,id_order:id_order,data_start:data_start }, {
+    where: {
+      id_product:id
+    }
+  }).then(data=> {res.redirect('procuct')}).catch(err=>{console.log("error")});
 
+
+}
 
 
 

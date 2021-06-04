@@ -1,6 +1,8 @@
 const  Router= require('express');
 const session = require('express-session');
 
+
+
 const bodyParser = require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
@@ -13,6 +15,7 @@ const archives= require('../controller/Archives_controller.js')
 const user_role= require("../controller/User_Role_controller.js")
 const product_worker=require('../controller/Product_worker_controller.js');
 const reg_user  = require('../controller/registration_controller.js');
+const error= require("../controller/Error_controller.js")
 
 
 
@@ -20,7 +23,7 @@ const reg_user  = require('../controller/registration_controller.js');
 
 
     const app = Router();
-   
+    
     app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
     
     app.use(Router.json())
@@ -43,7 +46,9 @@ const reg_user  = require('../controller/registration_controller.js');
           
           console.log("@@@@"+value)
           const data= user_role.User_role_check(value).then((data1)=>{
-          if(data1==1){
+          sess.role=data1
+          console.log("()"+sess.role)
+            if(data1==1){
             res.render("admin_start")
           }
           else{
@@ -62,16 +67,19 @@ const reg_user  = require('../controller/registration_controller.js');
        app.post("/reg_new",urlencodedParser,reg_user.reg_new)
 
       app.get("/product", product.findAll)
+      app.post("/product", product.findAll)
       app.post("/search_product",urlencodedParser, product.serach_product)
       app.post("/add_product",urlencodedParser, product.AddProduct)
       app.delete("/del", urlencodedParser, product.DeleteProduct)
+      app.put("/put_product",urlencodedParser,product.PutProduct)
       
-      app.post("/comments",urlencodedParser,product.AddComments)
+      //app.post("/comments",urlencodedParser,product.AddComments)
 
       app.get("/product_worker",product_worker.print)
       app.post("/load_product",urlencodedParser,product_worker.load_product)
 
-      
+      app.get("/error",error.Geterror)
+    
      
 
     
@@ -80,14 +88,20 @@ const reg_user  = require('../controller/registration_controller.js');
         
       app.get("/customers", customer.findAll)
       app.post("/customers",urlencodedParser,customer.AddCustomers)
-      app.get("/addCustomer",urlencodedParser, async (req,res)=>{
+      /*app.get("/addCustomer",urlencodedParser, async (req,res)=>{
 
         console.log("@@@@@@@@"+req.body.id_customer)
       } )
+      */
       app.get("/order",order.findAll)
       app.post("/data_finish",urlencodedParser,order.AddFinishDate)
       app.post("/order",urlencodedParser,order.AddOrder)
       app.post("/order_product",urlencodedParser,order.PrintProductOrder)
+      
+      
+      app.get("/my_order",order.MyOrder)
+      app.post("/my_order",order.MyOrderKey)
+      app.post("/comments",urlencodedParser,order.AddComments)
 
 
       app.get("/ready_products",ready_product.findAll)

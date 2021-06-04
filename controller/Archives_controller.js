@@ -9,6 +9,14 @@ const { Op } = require("sequelize");
 
 
 exports.findAll= (req, res) => {
+  var sess 
+  sess=req.session;
+  if(sess.role!=1){
+    
+    res.redirect("error")
+    return -1;
+  }  
+
     var k18=[]
     var k19=[]
     var k20=[]

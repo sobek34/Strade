@@ -2,6 +2,7 @@ const modelUser =require('../model/User.js');
 
 
 const crypto =require('crypto');
+const Group = require('../model/Group.js');
 
 let logger = func => {
   console.log(func);
@@ -33,8 +34,9 @@ const Login= async function(username,passw){
   var hassword=hash(passw,'10').hashedpassword
   console.log("pass"+hassword)
 
-  const UserProfile= await modelUser.findOne({attributes: ['id_user','password'], where: { name: username } });
+  const UserProfile= await modelUser.findOne({include: Group, where: { name: username } });
   var array_user=[]
+  console.log("type",UserProfile.dataValues.group.dataValues.type_user)
   array_user.push(UserProfile.dataValues.id_user)
   console.log(array_user)
   if (array_user==[]){
@@ -53,4 +55,6 @@ const Login= async function(username,passw){
         
       }
 }
+
+
 module.exports= Login;

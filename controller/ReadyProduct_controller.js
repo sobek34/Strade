@@ -4,6 +4,12 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 exports.findAll= (req, res) => {
+  var sess 
+      sess=req.session;
+      if(sess.role!=1){
+  
+        res.render("error")
+      }
     
     order.findAll( {
       where: {
@@ -34,6 +40,12 @@ exports.findAll= (req, res) => {
 }
 
 exports.UpdateArch= async (req, res) => {
+  var sess 
+      sess=req.session;
+      if(sess.role!=1){
+  
+        res.render("error")
+      }
 
   var id_arch=JSON.stringify(req.body.id);
   await order.update({ archives: true }, {

@@ -1,5 +1,5 @@
 <head>
-  <title>Admin Panel</title>
+  <title>User Panel</title>
   <link rel="stylesheet" href="style/main_style.css">
   <link rel="stylesheet" href="style/admin.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,6 +20,25 @@
   </nav>
 </div>
 <div class="main">
-  <h1>Hi,User</h1>
-  <div class="menu_admin"><a id="product" href="job_description">Job Description</a><a id="order" href="order_user">Order</a><a id="customers" href="comments">Comments</a><a id="sing_out" href="sing_out">Sing out</a></div>
+
+<h2>Please provide the order key </h2>
+<br>
+<form action="/my_order" method="POST">
+
+
+
+<label>KEY</label>
+<input type="text" name="key_order">
+<button type="submit">SEND</button>
+<button type="reset">RESET</button>
+</form>
+<h2> YOUR ORDER</h2>
+{{#each order}}
+<h4>ID order: {{this.id_order}}</h4>
+<h4>Name company: {{this.name_company}}</h4>
+<h4>Status: {{this.status}}</h4>
+<h4>Data start: {{this.data_start}}</h4>
+<h4>Data finish: {{this.data_finish}}</h4>
+{{/each}}
+
 </div>

@@ -64,7 +64,7 @@
       <label>ID Order</label><input name="id_order" type="text"><br>
       <label>Data start</label><input name="data_start" type="text"><br>
       
-      </select><button id="add_button">save</button>
+      </select><button id="add_button">Save</button>
       </form>
 
  </div>
@@ -78,35 +78,22 @@
       </form>
 
  </div>
+ <div class="put_product" >
+  <h2>Change data product</h2>
+      <form action="/product" method="POST"> 
+      <label>ID change product</label><input id="id_product" name="id_pro" type="text"><br>
+      <label>Model</label><input id="model" name="model" type="text"><br>
+      <label>ID order</label><input id="id_order" name="id_order" type="text"><br>
+      <label>Date start</label><input id="data_start" name="data_start" type="text"><br>
+      <button id="put_button">Save</button>
+      </form>
+
+ </div>
+
   </div>
 </div>
 
- <script type="text/javascript">
 
-
- 
-        $(document).ready(function () {
-            $('#delete_button').click(function () {
-               
-               var data = {};
-					data.id = document.getElementById('id_del').value
-					
-          console.log(JSON.stringify(data))
-                    $.ajax({
-                    url: "/del",
-                    type: "DELETE",
-                    contentType: "application/json",
-                     data: JSON.stringify(data),
-                      dataType: 'json',
-                    success: function(data) {
-                            console.log('success');
-                            console.log(JSON.stringify(data));
-                        }
-                });
-            });
-        });
-        
-    </script>
-
+<script type="text/javascript" src="js/Put_product.js"></script>
 <script type="text/javascript" src="js/Delete_product.js">
 </script>

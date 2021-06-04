@@ -5,6 +5,14 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 exports.findAll= (req, res) => {
+   var sess 
+      sess=req.session;
+      if(sess.role!=1){
+        
+        res.redirect("error")
+        return -1;
+      }
+
   Customers.findAll().then(data=>{
     var id_customers=[]
     var len=0;
@@ -34,6 +42,14 @@ exports.findAll= (req, res) => {
 
 
 exports.AddCustomers= async (req, res) => {
+  var sess 
+  sess=req.session;
+  if(sess.role!=1){
+    
+    res.redirect("error")
+    return -1;
+  }  
+ 
   const { name_company, nip, adress_company,nr } = req.body
   
   

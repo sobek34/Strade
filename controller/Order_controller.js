@@ -8,6 +8,14 @@ var randomstring = require("randomstring");
 
 
 exports.findAll= (req, res) => {
+  
+  var sess 
+      sess=req.session;
+      if(sess.role!=1){
+        
+        res.render("error",{err:"error"})
+        return -1;
+      }
     Order.findAll({include: Customers}).then(data=>{
       var id_order=[]
       var len=0;
@@ -58,6 +66,14 @@ exports.findAll= (req, res) => {
 
 
   exports.AddOrder= async (req, res) => {
+    var sess 
+    sess=req.session;
+    if(sess.role!=1){
+      
+      res.redirect("error")
+      return -1;
+    }  
+   
     const { customer_order, data_start } = req.body
 
     Customers.findAll({attributes: ['id_customers'], where:{name_company:customer_order}}).then(data=>{
@@ -84,6 +100,16 @@ exports.findAll= (req, res) => {
 }
   
 exports.AddFinishDate= async (req, res) => {
+  
+  var sess 
+    sess=req.session;
+    if(sess.role!=1){
+      
+      res.redirect("error")
+      return -1;
+    }  
+
+  
   const { id_order, date_finish } = req.body
 
   console.log(id_order)
@@ -97,6 +123,14 @@ exports.AddFinishDate= async (req, res) => {
 }
 
 exports.PrintProductOrder= async (req,res) =>{
+  
+  var sess 
+    sess=req.session;
+    if(sess.role!=1){
+      
+      res.redirect("error")
+      return -1;
+    }  
   const{ id_Order }=req.body
   Order.findAll({include: Product,where:{id_order:id_Order}}).then(data=>{
     prod=data[0].dataValues.products
@@ -122,3 +156,30 @@ exports.PrintProductOrder= async (req,res) =>{
   })
 
 }
+
+exports.MyOrder= (req,res) =>{
+ 
+    res.render("my_order")
+
+}
+
+exports.MyOrderKey=async (req,res) =>{
+  const {key_order} =req.body
+  console.log("&*^&"+key_order)
+
+  Order.findOne({where:{key:key_order}}).then((data=>{
+    var order_tab=[]
+    console.log("2143521**",data.dataValues)
+    order_tab.push(data.dataValues)
+    res.render("my_order",{order:order_tab})
+
+
+  }))
+}
+
+exports.AddComments= async (req, res) => {
+  const {id_order,comments} = req.body
+
+  const cut= await Order.update({comments:comments},{where:{id_order:id_order}}).then(gig => res.render('comments',{mess:"Add comments"}))
+  
+};
