@@ -1,0 +1,32 @@
+<head>
+  <title>Comments</title>
+  <link rel="stylesheet" href="style/main_style.css">
+  <link rel="stylesheet" href="style/comments.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+</head>
+<div class="menu"><img src="./img/logo1.svg" alt="logo">
+  <nav>
+    <ul><a href="/job_description">
+        <li>Job Description</li>
+      </a><a href="/product_worker">
+        <li>Order</li>
+      </a><a href="/comments">
+        <li>Comments</li>
+      </a><br><br><a href="/sing_out"></a>
+      <li>Sing out</li>
+    </ul>
+  </nav>
+</div>
+<div class="main">
+    <h3>ID Order</h3>
+    {{id_orders}}
+    <br>
+ 
+{{#each comments_tab}}
+<h4>Content:</h4>{{this.data_comment}}
+<h4>Date:</h4>{{this.createdAt}}
+
+  {{/each}}
+
+</div>

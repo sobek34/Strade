@@ -40,9 +40,6 @@ const Order = db.define('order', {
        
 },
 
-  id_comments:{
-  type: DataTypes.STRING
-}
   
   }, {
 

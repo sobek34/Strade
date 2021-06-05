@@ -16,6 +16,7 @@ const user_role= require("../controller/User_Role_controller.js")
 const product_worker=require('../controller/Product_worker_controller.js');
 const reg_user  = require('../controller/registration_controller.js');
 const error= require("../controller/Error_controller.js")
+const comment=require("../controller/Comments_controller")
 
 
 
@@ -101,13 +102,14 @@ const error= require("../controller/Error_controller.js")
       
       app.get("/my_order",order.MyOrder)
       app.post("/my_order",order.MyOrderKey)
-      app.post("/comments",urlencodedParser,order.AddComments)
+      app.post("/comments",urlencodedParser,comment.AddComment)
 
 
       app.get("/ready_products",ready_product.findAll)
       app.put("/update_arch",urlencodedParser, ready_product.UpdateArch)
       app.get("/archives",archives.findAll)
 
+      app.post("/print_comment",urlencodedParser,comment.CommentsOrderPrint)
 
     
 
