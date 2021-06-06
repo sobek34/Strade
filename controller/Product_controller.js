@@ -152,7 +152,7 @@ exports.PutProduct=async (req, res) => {
     where: {
       id_product:id
     }
-  }).then(data=> {res.redirect('procuct')}).catch(err=>{console.log("error")});
+  }).then(data=> {res.render('product')}).catch(err=>{console.log("error")});
 
 
 }

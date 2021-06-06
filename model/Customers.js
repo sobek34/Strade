@@ -2,6 +2,7 @@ const  Sequelize=require('sequelize');
 const DataTypes=require('sequelize');
 const db=require('../db.js');
 const Order=require('../model/Order')
+const OrderCommenst=require('../model/OrderComments')
 
 
 const Customers = db.define('customer', {

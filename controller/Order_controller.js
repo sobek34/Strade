@@ -136,7 +136,7 @@ exports.PrintProductOrder= async (req,res) =>{
     prod=data[0].dataValues.products
     id_ord=data[0].dataValues.id_order
     key_order=data[0].dataValues.key
-    console.log("id",id_ord)
+    date_start=data[0].data_start
     var len=0
     while(true){
       if (prod[len]==undefined){
@@ -150,7 +150,7 @@ exports.PrintProductOrder= async (req,res) =>{
     product.push(prod[i].dataValues)
     }
     console.log("#",product[0])
-  res.render("order_product",{id_order:id_ord,key:key_order,product_model:product})
+  res.render("order_product",{id_order:id_ord,key:key_order,product_model:product,date_start:date_start})
   
   
   })
@@ -158,18 +158,32 @@ exports.PrintProductOrder= async (req,res) =>{
 }
 
 exports.MyOrder= (req,res) =>{
- 
+
+  var sess 
+  sess=req.session;
+  if(sess.role!=2 ){
+    
+    res.redirect("error")
+    return -1;
+  } 
     res.render("my_order")
 
 }
 
 exports.MyOrderKey=async (req,res) =>{
+  var sess 
+  sess=req.session;
+  if(sess.role!=2 ){
+    
+    res.redirect("error")
+    return -1;
+  } 
   const {key_order} =req.body
-  console.log("&*^&"+key_order)
+
 
   Order.findOne({where:{key:key_order}}).then((data=>{
     var order_tab=[]
-    console.log("2143521**",data.dataValues)
+    
     order_tab.push(data.dataValues)
     res.render("my_order",{order:order_tab})
 
@@ -178,6 +192,13 @@ exports.MyOrderKey=async (req,res) =>{
 }
 
 exports.AddComments= async (req, res) => {
+  var sess 
+  sess=req.session;
+  if(sess.role!=2 ){
+    
+    res.redirect("error")
+    return -1;
+  } 
   const {id_order,comments} = req.body
 
   const cut= await Order.update({comments:comments},{where:{id_order:id_order}}).then(gig => res.render('comments',{mess:"Add comments"}))

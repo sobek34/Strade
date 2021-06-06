@@ -2,6 +2,7 @@ const order=require('../model/Order')
 const bodyParser = require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 const { Op } = require("sequelize");
+const Customers=require('../model/Customers')
 
 
 
@@ -25,7 +26,7 @@ exports.findAll= (req, res) => {
 
     
     order.findAll( {
-      
+      include: Customers,
       where: {
         archives: true,
         
@@ -53,14 +54,16 @@ exports.findAll= (req, res) => {
   })
 
   order.findAll( {
+    include: Customers,
       
     where: {
       archives: true,
       
       data_finish:{
         [Op.between]: ["2019-01-01","2019-12-31"]
-      }
-    }
+      },
+      
+    },
   }).then(data=>{
     var len=0
     while(true){
@@ -81,7 +84,7 @@ exports.findAll= (req, res) => {
 
 
   order.findAll( {
-      
+    include: Customers,
     where: {
       archives: true,
       
@@ -110,6 +113,7 @@ exports.findAll= (req, res) => {
 
 
   order.findAll( {
+    include: Customers,
       
     where: {
       archives: true,
@@ -131,6 +135,7 @@ exports.findAll= (req, res) => {
     var i=0
     for(i=0;i<len;i++){
     k21.push(data[i].dataValues)
+    console.log("@#@#",data[i].dataValues)
     
     }
     

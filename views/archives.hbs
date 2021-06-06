@@ -13,20 +13,19 @@
       <li><a href="\customers">Customers</a></li>
       <li><a href="\ready_products">Ready Products</a></li>
       <li><a href="\archives">Archives</a></li><br><br>
-      <li><a href="sing_out">Sing out</a></li>
+      <li><a href="\sing_out">Sing out</a></li>
     </ul>
   </nav>
 </div>
 <div class="main">
   <h2>Archives</h2>
-  <div class="y_data">2021<button id="b1" type="button"><img src="/img/down-arrow.svg"></button>
+  <div class="y_data">2021
     
     <div class="table_2021">
      <table>
       <tr>
-        <th>ID</th>
-        <th>MODEL</th>
-        <th>ID_CUSTOMER</th>
+     <th>ID_ORDER</th>
+        <th>CUSTOMER</th>
         <th>DATA_START</th>
         <th>DATA FINISH</th>
         
@@ -34,8 +33,8 @@
        {{#each y21}}
       <tr>
        <td>{{this.id_order}}</td>
-        <td></td>
-        <td>{{this.id_customers}}</td>
+       
+        <td>{{this.customer.dataValues.name_company}}</td>
         <td>{{this.data_start}}</td>
         <td>{{this.data_finish}}</td>
         
@@ -45,13 +44,12 @@
     </table>
     </div>
   </div>
-  <div class="y_data">2020<button id="b2" type="button"><img src="/img/down-arrow.svg"></button>
+  <div class="y_data">2020
     <div class="table_2020">
       <table>
       <tr>
-        <th>ID</th>
-        <th>MODEL</th>
-        <th>ID_CUSTOMER</th>
+       <th>ID_ORDER</th>
+        <th>CUSTOMER</th>
         <th>DATA_START</th>
         <th>DATA FINISH</th>
         
@@ -60,8 +58,8 @@
       <tr>
         
      <td>{{this.id_order}}</td>
-        <td></td>
-        <td>{{this.id_customers}}</td>
+        
+         <td>{{this.customer.dataValues.name_company}}</td>
         <td>{{this.data_start}}</td>
         <td>{{this.data_finish}}</td>
         
@@ -74,13 +72,12 @@
 
     </div>
   </div>
-  <div class="y_data">2019<button id="b3" type="button"><img src="/img/down-arrow.svg"></button>
+  <div class="y_data">2019
     <div class="table_2019">
       <table>
       <tr>
-        <th>ID</th>
-        <th>MODEL</th>
-        <th>ID_CUSTOMER</th>
+        <th>ID_ORDER</th>
+        <th>CUSTOMER</th>
         <th>DATA_START</th>
         <th>DATA FINISH</th>
         
@@ -88,8 +85,8 @@
        {{#each y19}}
       <tr>
           <td>{{this.id_order}}</td>
-        <td></td>
-        <td>{{this.id_customers}}</td>
+        
+         <td>{{this.customer.dataValues.name_company}}</td>
         <td>{{this.data_start}}</td>
         <td>{{this.data_finish}}</td>
         
@@ -99,12 +96,11 @@
     </table>
     </div>
   </div>
-  <div class="y_data">2018<button id="b4" type="button"><img src="/img/down-arrow.svg"></button>
+  <div class="y_data">2018
     <div class="table_2018">
 <table>
       <tr>
-        <th>ID</th>
-        <th>MODEL</th>
+        <th>ID_ORDER</th>
         <th>ID_CUSTOMER</th>
         <th>DATA_START</th>
         <th>DATA FINISH</th>
@@ -113,8 +109,7 @@
        {{#each y18}}
       <tr>
          <td>{{this.id_order}}</td>
-        <td></td>
-        <td>{{this.id_customers}}</td>
+         <td>{{this.customer.dataValues.name_company}}</td>
         <td>{{this.data_start}}</td>
         <td>{{this.data_finish}}</td>
         

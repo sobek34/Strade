@@ -36,7 +36,7 @@ const Login= async function(username,passw){
 
   const UserProfile= await modelUser.findOne({include: Group, where: { name: username } });
   var array_user=[]
-  console.log("type",UserProfile.dataValues.group.dataValues.type_user)
+ 
   array_user.push(UserProfile.dataValues.id_user)
   console.log(array_user)
   if (array_user==[]){

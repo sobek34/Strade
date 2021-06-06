@@ -20,7 +20,11 @@ const User = db.define('User', {
     password: {
       type: DataTypes.STRING
       
-    }
+    },
+    id_group:{
+      type: Sequelize.INTEGER,
+      
+    },
     
   }, {
    

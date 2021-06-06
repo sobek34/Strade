@@ -1,15 +1,22 @@
-const order=require('../model/Order.js')
-const comments=require('../model/Comments.js')
+
 const bodyParser = require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 const { Op } = require("sequelize");
 const Order = require('../model/Order.js');
 const Comments = require('../model/Comments.js');
+const OrderComments=require('../model/OrderComments');
 const Commenst = require('../model/Comments.js');
 
 
 
 exports.CommentsOrderPrint= async(req, res) => {
+    var sess 
+    sess=req.session;
+    if(sess.role!=1 ){
+      
+      res.redirect("error")
+      return -1;
+    }  
 
     const {id_order_com}=req.body
 
@@ -35,13 +42,24 @@ exports.CommentsOrderPrint= async(req, res) => {
 }
 
 exports.AddComment = async (req,res) =>{
-
+    var sess 
+    sess=req.session;
+    if(sess.role!=2 ){
+      
+      res.redirect("error")
+      return -1;
+    }  
     const {id_order,comments} = req.body
+    var id_comment=[]
+    const id_comments= await Commenst.create({data_comment:comments}).then(data=>{
+        return data.dataValues.id_comment
 
-    Commenst.create({data_comment:comments,Order:[{id_order:id_order,OrderComments: {
-        selfGranted: true
-      }}]
+       
+    })
     
-    },{
-        include: Order})
+    OrderComments.create({id_comment:id_comments,id_order:id_order})
+
+    res.render("comments",{message:"add comment"})
+    
+    
 }

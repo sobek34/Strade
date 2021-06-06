@@ -20,10 +20,6 @@ const Product = db.define('product', {
       allowNull: false
     },
 
-    comments: {
-        type: DataTypes.STRING,
-        
-      },
 
     data_start:{
         type: Sequelize.DATEONLY,

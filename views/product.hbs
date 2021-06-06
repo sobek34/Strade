@@ -28,7 +28,7 @@
       <input name="str_search" type="text"><select id="type_search_item" name="type_search_item">
         <option value="id_product">id_product</option>
         <option value="model">model</option>
-        <option value="customer">customer</option>
+        
       </select><button id="search_button"><img src="./img/transparency.svg" alt="search"></button></form>
   </div>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -39,9 +39,9 @@
         <th>ID</th>
         <th>MODEL</th>
         <th>ID_ORDER</th>
-        <th>DATA_START</th>
-        <th>DATA FINISH</th>
-        <th>DELETE</th>
+        <th>DATE_START</th>
+        <th>DATE FINISH</th>
+        
       </tr>
        {{#each product}}
       <tr>
@@ -50,7 +50,7 @@
         <td>{{this.id_order}}</td>
         <td>{{this.data_start}}</td>
         <td>{{this.data_finish}}</td>
-        <td></td>
+        
         
       </tr>
     {{/each}}
@@ -62,18 +62,20 @@
   <form action="/add_product" method="POST">
       <label>Model</label><input name="model" type="text"><br>
       <label>ID Order</label><input name="id_order" type="text"><br>
-      <label>Data start</label><input name="data_start" type="text"><br>
+      <label>Date start</label><input name="data_start" type="text"><br>
       
       </select><button id="add_button">Save</button>
       </form>
 
  </div>
+ <br>
 
 
   <div class="delete_product" >
+    <br>
   <h2>Delete product</h2>
       <form action="/product"> 
-      <label>ID</label><input id="id_del" name="id_del" type="text"><br>
+      <label>ID product</label><input id="id_del" name="id_del" type="text"><br>
       <button id="delete_button">Delete</button>
       </form>
 
@@ -81,7 +83,7 @@
  <div class="put_product" >
   <h2>Change data product</h2>
       <form action="/product" method="POST"> 
-      <label>ID change product</label><input id="id_product" name="id_pro" type="text"><br>
+      <label class="id_product">ID change product</label><input id="id_product" name="id_pro" type="text"><br>
       <label>Model</label><input id="model" name="model" type="text"><br>
       <label>ID order</label><input id="id_order" name="id_order" type="text"><br>
       <label>Date start</label><input id="data_start" name="data_start" type="text"><br>

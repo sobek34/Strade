@@ -6,27 +6,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
 </head>
 <div class="menu"><img src="./img/logo1.svg" alt="logo">
-  <nav>
-    <ul><a href="/job_description">
-        <li>Job Description</li>
-      </a><a href="/product_worker">
-        <li>Order</li>
-      </a><a href="/comments">
-        <li>Comments</li>
-      </a><br><br><a href="/sing_out"></a>
-      <li>Sing out</li>
+    <nav>
+    <ul>
+      <li><a href="\product">Product</a></li>
+      <li><a href="\order">Order</a></li>
+      <li><a href="\customers">Customers</a></li>
+      <li><a href="\ready_products">Ready Products</a></li>
+      <li><a href="\archives">Archives</a></li><br><br>
+      <li><a href="sing_out">Sing out</a></li>
     </ul>
   </nav>
 </div>
 <div class="main">
-    <h3>ID Order</h3>
-    {{id_orders}}
+  <div class="id_order">
+        <h3>ID Order:{{id_orders}}</h3>
     <br>
- 
+ </div>
+
 {{#each comments_tab}}
+<div class="box_comment">
 <h4>Content:</h4>{{this.data_comment}}
 <h4>Date:</h4>{{this.createdAt}}
-
+</div>
   {{/each}}
 
 </div>

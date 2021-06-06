@@ -7,20 +7,18 @@
 <div class="sing_in">
 <div class="login"><img src="./img/logo1.svg">
 </div>
-
+{{message}}
 <form action="/reg_new" method="POST">
 <label>User</label>  
 <input type="text" name="user_name">
 <br><br>
 <label>Password</label>
 <input type="password" name="pass">
-<br><br>
-<label>Role</label>
-<select id="id_role" name="id_role">
-        <option value="2">Printer</option>
-        <option value="3">Carpenter</option>
-        <option value="4">Packing</option>
-        </select>
+<br>
+<label> Repeat Password </label>
+<input type="password" name="pass1">
+
+
 <br>
 <button type="submit">Send</button>
 <button type="reset">Reset</button>

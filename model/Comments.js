@@ -19,6 +19,8 @@ const Commenst = db.define('comment', {
    
     
   })
+
+
   
 Commenst.belongsToMany(Order, {foreignKey: 'id_comment', through: 'OrderCommenst' });
 Order.belongsToMany(Commenst, { foreignKey: 'id_order',through: 'OrderCommenst' });

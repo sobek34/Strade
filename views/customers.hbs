@@ -20,7 +20,7 @@
 <div class="main">
   
   
- 
+ <div class="Custormer_form">
   <h2>Add new customers</h2>
   <form action="/customers" method="POST">
     <label>Name company</label>
@@ -32,6 +32,7 @@
     <div class="buttom_customers">
     <button type="reset">Reset</button><button type="submit">Save</button></div>
   </form>
+  </div>
   <div class="table_product">
     <table>
        
@@ -41,7 +42,7 @@
         <th>NIP</th>
         <th>ADRESS</th>
         <th>TELEFON</th>
-        <th>NUMBER OF ORDERS</th>
+
       </tr>
        {{#each cust}}
       <tr>
@@ -50,13 +51,10 @@
         <td>{{this.nip}}</td>
         <td>{{this.adres}}</td>
         <td>{{this.phone_number}}</td>
-        <td>{{this.id_customers}}</td>
+ 
       </tr>
     {{/each}}
     </table>
-    <form action="/addCustomer" method="GET">
-    <label>ID</label><input name="id_customer" type="text"> 
-    <button type="submit">Send</button>
-    </form>
+    
   </div>
 </div>

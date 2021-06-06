@@ -17,7 +17,7 @@ const product_worker=require('../controller/Product_worker_controller.js');
 const reg_user  = require('../controller/registration_controller.js');
 const error= require("../controller/Error_controller.js")
 const comment=require("../controller/Comments_controller")
-
+const sing_out=require('../controller/Sing_out_controller.js')
 
 
 
@@ -46,14 +46,20 @@ const comment=require("../controller/Comments_controller")
         chechlog.then((value) =>{
           
           console.log("@@@@"+value)
+
+          if(value==0){
+            res.render("index",{message:"wrong login or password"})
+          }
           const data= user_role.User_role_check(value).then((data1)=>{
-          sess.role=data1
-          console.log("()"+sess.role)
-            if(data1==1){
-            res.render("admin_start")
+          console.log('EEE',data1)
+            sess.role=data1[0]
+            sess.type_user=data1[1]
+         
+            if(data1[0]==1){
+            res.render("admin_start",{type:sess.type_user})
           }
           else{
-            res.render("user_start")
+            res.render("user_start",{type:sess.type_user})
           }
 
           }
@@ -74,7 +80,7 @@ const comment=require("../controller/Comments_controller")
       app.delete("/del", urlencodedParser, product.DeleteProduct)
       app.put("/put_product",urlencodedParser,product.PutProduct)
       
-      //app.post("/comments",urlencodedParser,product.AddComments)
+      
 
       app.get("/product_worker",product_worker.print)
       app.post("/load_product",urlencodedParser,product_worker.load_product)
@@ -89,11 +95,7 @@ const comment=require("../controller/Comments_controller")
         
       app.get("/customers", customer.findAll)
       app.post("/customers",urlencodedParser,customer.AddCustomers)
-      /*app.get("/addCustomer",urlencodedParser, async (req,res)=>{
-
-        console.log("@@@@@@@@"+req.body.id_customer)
-      } )
-      */
+    
       app.get("/order",order.findAll)
       app.post("/data_finish",urlencodedParser,order.AddFinishDate)
       app.post("/order",urlencodedParser,order.AddOrder)
@@ -110,6 +112,7 @@ const comment=require("../controller/Comments_controller")
       app.get("/archives",archives.findAll)
 
       app.post("/print_comment",urlencodedParser,comment.CommentsOrderPrint)
+      app.get("/sing_out",sing_out.Sing_out)
 
     
 

@@ -16,7 +16,7 @@ img{
     
     left: 20rem;
     top: 10rem;
-    height: 70vh;
+    height: 80vh;
 }
 form{
     margin: 1rem;
@@ -46,6 +46,9 @@ button{
 button:active{
     border-bottom: 0.5rem black solid;
     border-radius: 1rem;
+}
+button:visited{
+    color: black;
 }
 .sing_on{
     margin-left: 20rem;

@@ -13,7 +13,7 @@
       <li><a href="\customers">Customers</a></li>
       <li><a href="\ready_products">Ready Products</a></li>
       <li><a href="\archives">Archives</a></li><br><br>
-      <li><a href="sing_out">Sing out</a></li>
+      <li><a href="\sing_out">Sing out</a></li>
     </ul>
   </nav>
 </div>
@@ -51,13 +51,17 @@
       
     </table>
   </div>
+  <div class="finish_date">
  <h2>Finish date</h2>
   <form action="/data_finish" method="POST">
-  <label><h3>ID order</h3></label><input type="text" name="id_order">  
-  <label><h3>Date</h3></label><input type="text" name="date_finish">  
+  <label>ID order</label><input type="text" name="id_order">  
+  <label>Date</label><input type="text" name="date_finish">  
   <button type="submit">Send</button>
   </form>
+  </div>
+
 <br><br>
+<div class="print_op">
 <h2>Print product to order </h2>
   <form action="/order_product" method="POST">
   <label>ID order</label>
@@ -66,12 +70,14 @@
   <button type="reset">Reset</button>
 
   </form>
+  </div>
   <br>
+  <div class="print_comment">
   <h2>Print comment to order</h2>
 <form action="/print_comment" method="POST">
 <label>ID Order</label><input type="text" name="id_order_com">
 <button type="submit">Print</button>
 </form>
-
+</div>
 
 </div>
