@@ -35,6 +35,7 @@ exports.reg_new= async(req, res) => {
     const {user_name,pass,pass1,id_role}=req.body
     if(pass!=pass1){
         res.render("reg_user",{message:"password doesn't match"})
+        return 0;
     }
     var password=hash(pass,'10').hashedpassword
     const user= await modelUser.create({name:user_name,password:password})

@@ -6,19 +6,18 @@ const session = require('express-session');
 const bodyParser = require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-const login =require('../controller/User_controller.js')
+
 const customer =require('../controller/Customers_controller.js')
 const product= require('../controller/Product_controller.js')
 const order= require('../controller/Order_controller.js')
 const ready_product= require('../controller/ReadyProduct_controller.js')
 const archives= require('../controller/Archives_controller.js')
-const user_role= require("../controller/User_Role_controller.js")
 const product_worker=require('../controller/Product_worker_controller.js');
 const reg_user  = require('../controller/registration_controller.js');
 const error= require("../controller/Error_controller.js")
 const comment=require("../controller/Comments_controller")
 const sing_out=require('../controller/Sing_out_controller.js')
-
+const main= require('../controller/Main_controller.js')
 
 
 
@@ -30,46 +29,10 @@ const sing_out=require('../controller/Sing_out_controller.js')
     app.use(Router.json())
     
     var sess
-    app.get("/", (req, res) => {
-        res.render("index");
-        
-        
-      });
-      
-      app.post("/",urlencodedParser, async (req, res) => {
-        var sess 
-        sess=req.session;
-        console.log(req.body)
-        var chechlog=login(req.body.user_nick,req.body.user_pass)
-        console.log(chechlog)
-        var value1
-        chechlog.then((value) =>{
-          
-          console.log("@@@@"+value)
 
-          if(value==0){
-            res.render("index",{message:"wrong login or password"})
-          }
-          const data= user_role.User_role_check(value).then((data1)=>{
-          console.log('EEE',data1)
-            sess.role=data1[0]
-            sess.type_user=data1[1]
-         
-            if(data1[0]==1){
-            res.render("admin_start",{type:sess.type_user})
-          }
-          else{
-            res.render("user_start",{type:sess.type_user})
-          }
+        app.get("/",main.MainPage)
+        app.post("/",urlencodedParser,main.Login)
 
-          }
-          )  
-        });
-       
-       
-       
-        });
-    
        app.get("/reg_user",reg_user.reg_user)
        app.post("/reg_new",urlencodedParser,reg_user.reg_new)
 

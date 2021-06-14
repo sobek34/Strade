@@ -5,7 +5,7 @@ const session = require('express-session');
 const express= require("express");
 const app = express();
 const path =require("path");
-
+var helmet = require('helmet')
 
 
 const router = express.Router();
@@ -14,9 +14,15 @@ const bodyParser=require('body-parser')
 var Sequelize =require('sequelize');
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//app.use(helmet())
 
 
 
+app.set('trust proxy', 1) 
+app.use(session({
+  secret: 's3Cur3',
+  name: 'sessionId'
+}))
 
 
 app.engine('hbs', require('exphbs'));
