@@ -1,0 +1,43 @@
+<head>
+  <title>User Panel</title>
+  <link rel="stylesheet" href="style/main_style.css">
+  <link rel="stylesheet" href="style/admin.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+</head>
+<div class="menu"><img src="img/logo1.svg" alt="logo">
+  <nav>
+    <ul><a href="/my_order">
+        <li>My order</li>
+      </a><a href="/comments">
+        <li>Comments</li>
+      </a>
+      <br><br><a href="/sing_out">
+      <li>Sing out</li></a>
+    </ul>
+  </nav>
+</div>
+<div class="main">
+
+<h2>Please provide the order key </h2>
+<br>
+<form action="/my_order" method="POST">
+
+
+
+<label>KEY</label>
+<input type="text" name="key_order">
+<button type="submit">SEND</button>
+<button type="reset">RESET</button>
+</form>
+<h2> YOUR ORDER</h2>
+{{#each order}}
+<h4>ID order: {{this.id_order}}</h4>
+<h4>Name company: {{this.name_company}}</h4>
+<h4>Status: {{this.status}}</h4>
+<h4>Data start: {{this.data_start}}</h4>
+<h4>Data finish: {{this.data_finish}}</h4>
+{{/each}}
+
+</div>

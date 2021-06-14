@@ -1,0 +1,43 @@
+<head>
+  <title>Order</title>
+  <link rel="stylesheet" href="style/main_style.css">
+  <link rel="stylesheet" href="style/order.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+</head>
+<div class="menu"><img src="./img/logo1.svg" alt="logo">
+  <nav>
+    <ul>
+      <li><a href="\product">Product</a></li>
+      <li><a href="\order">Order</a></li>
+      <li><a href="\customers">Customers</a></li>
+      <li><a href="\ready_products">Ready Products</a></li>
+      <li><a href="\archives">Archives</a></li><br><br>
+      <li><a href="sing_out">Sing out</a></li>
+    </ul>
+  </nav>
+</div>
+<div class="main">
+    <h2>ID ORDER : {{id_order}}</h2>
+    <h2>KEY : {{key}}</h2>
+
+
+  <table>
+    <tr>
+      <th>Id_product</th>
+      <th>Model</th>
+      <th>Data start</th>
+    
+    </tr>
+{{#each product_model}}
+    <tr>
+      <td>{{this.id_product}}</td>
+      <td>{{this.model}}</td>
+      <td>{{this.data_start}}</td>
+
+    </tr> 
+     {{/each}}
+ 
+  </table>
+  </form>
+</div>

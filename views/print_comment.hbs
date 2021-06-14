@@ -1,0 +1,33 @@
+<head>
+  <title>Comments</title>
+  <link rel="stylesheet" href="style/main_style.css">
+  <link rel="stylesheet" href="style/comments.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+</head>
+<div class="menu"><img src="./img/logo1.svg" alt="logo">
+    <nav>
+    <ul>
+      <li><a href="\product">Product</a></li>
+      <li><a href="\order">Order</a></li>
+      <li><a href="\customers">Customers</a></li>
+      <li><a href="\ready_products">Ready Products</a></li>
+      <li><a href="\archives">Archives</a></li><br><br>
+      <li><a href="sing_out">Sing out</a></li>
+    </ul>
+  </nav>
+</div>
+<div class="main">
+  <div class="id_order">
+        <h3>ID Order:{{id_orders}}</h3>
+    <br>
+ </div>
+
+{{#each comments_tab}}
+<div class="box_comment">
+<h4>Content:</h4>{{this.data_comment}}
+<h4>Date:</h4>{{this.createdAt}}
+</div>
+  {{/each}}
+
+</div>

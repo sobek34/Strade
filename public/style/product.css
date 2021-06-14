@@ -1,7 +1,7 @@
 .main{
     display: flex;
     flex-direction: column;
-    height: 40rem;
+    height: 100rem;
 }
 
 form {
@@ -13,6 +13,7 @@ form {
 input[type=text]{
     width: 20rem;
     height: 2rem;
+    margin: 0.2em;
 }
 
 select{
@@ -22,14 +23,7 @@ select{
     background: #5476a4;
     color: #fff;
 }
-button{
-    width: 3rem;
-    height: 2rem;
-    background: #5476a4;
-    border: none;
-    position: absolute;
-    margin-left: 1rem;
-}
+
 table {
     margin-left: 7rem;
     border: 1px solid;
@@ -56,6 +50,7 @@ td {
 }
 .table_product{
     overflow: auto;
+    height: 100rem;
 }
 
 a{
@@ -67,4 +62,27 @@ a{
 
 a:hover{
     color: #5476a4;
+}
+.btn-danger{
+    position: relative;
+    width: 4rem;
+}
+.id_product{
+
+    background: red;
+}
+.add_product{
+    background-color: #5476a4;
+    height: 50%;
+    margin-top: 1rem;
+}
+.delete_product{
+    background-color: #5476a4;
+    margin-top: 1rem;
+}
+
+.put_product{
+    background-color: #5476a4;
+    margin-top: 1rem;
+    height: 60%;
 }

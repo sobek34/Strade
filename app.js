@@ -1,43 +1,59 @@
-const express = require("express");
-const app = express();
-const path = require("path");
-const router = express.Router();
+var hbs = require('express-handlebars');
 
-app.set("view engine", "pug");
+const index= require('./routes/index_routes.js')
+const session = require('express-session');
+const express= require("express");
+const app = express();
+const path =require("path");
+var helmet = require('helmet')
+
+
+const router = express.Router();
+const bodyParser=require('body-parser')
+
+var Sequelize =require('sequelize');
+app.use(bodyParser.urlencoded({ extended: true }));
+
+//app.use(helmet())
+
+
+
+app.set('trust proxy', 1) 
+app.use(session({
+  secret: 's3Cur3',
+  name: 'sessionId'
+}))
+
+
+app.engine('hbs', require('exphbs'));
+app.set('view engine', 'hbs');
 app.set("views", path.join(__dirname, "views"));
+
 app.use(express.static('public'))
 
-router.get("/", (req, res) => {
-  res.render("index");
-});
+
+
+
+
+app.use('/',index);
+//app.use('/product',product());
+
 
 router.get("/admin", (req, res) => {
   res.render("admin_start");
 });
 
 router.get("/user", (req, res) => {
-  res.render("user_start");
+  res.render("user_start") ;
 });
 
 
-router.get("/product", (req, res) => {
-  res.render("product");
-});
 
 
-router.get("/order", (req, res) => {
-  res.render("order");
-});
 
-router.get("/customers", (req, res) => {
-  res.render("customers");
-});
-router.get("/ready_products", (req, res) => {
-  res.render("ready_products");
-});
-router.get("/archives", (req, res) => {
-  res.render("archives");
-});
+
+
+
 
 router.get("/job_description", (req, res) => {
   res.render("job_description");
@@ -50,13 +66,17 @@ router.get("/comments", (req, res) => {
 router.get("/order_user", (req, res) => {
   res.render("order_user");
 });
+router.get("/archives", (req, res) => {
+  res.render("archives");
+});
+router.delete('/del',(req, res)=>{
+  res.send("jessss")
+})
 
-
-
-
-
+app.use(session({secret: 'ssshhhhh'}));
 
 app.use("/", router);
 app.listen(process.env.port || 3000);
+
 
 console.log("Running at Port 3000");

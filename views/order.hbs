@@ -1,0 +1,83 @@
+<head>
+  <title>Order</title>
+  <link rel="stylesheet" href="style/main_style.css">
+  <link rel="stylesheet" href="style/order.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+</head>
+<div class="menu"><img src="./img/logo1.svg" alt="logo">
+  <nav>
+    <ul>
+      <li><a href="\product">Product</a></li>
+      <li><a href="\order">Order</a></li>
+      <li><a href="\customers">Customers</a></li>
+      <li><a href="\ready_products">Ready Products</a></li>
+      <li><a href="\archives">Archives</a></li><br><br>
+      <li><a href="\sing_out">Sing out</a></li>
+    </ul>
+  </nav>
+</div>
+<div class="main">
+  <div class="add_order">
+    <h1>Add new order</h1>
+    <form action="/order" method="POST">
+      <label>Customer</label><select id="customer_order" name="customer_order">
+        {{#each company}}
+        <option>{{this.name_company}}</option>
+      
+        {{/each}}
+      </select><br><label>Data Start</label><input id="data_start" type="text" name="data_start"><br>
+      <div class="buttom_order"><button type="reset">RESET</button><button type="submit">SAVE</button></div>
+    </form>
+  </div>
+  <div class="table_product"><br>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>CUSTOMERS</th>
+        <th>STATUS</th>
+        <th>DATA_START</th>
+        <th>DATA FINISH</th>
+      </tr>
+        {{#each cust}}
+      <tr>
+        <td>{{this.id_order}}</td>
+        <td>{{this.customer.dataValues.name_company}}</td>
+        <td>{{this.status}}</td>
+        <td>{{this.data_start}}</td>
+        <td>{{this.data_finish}}</td> 
+      </tr>
+    {{/each}}
+      
+    </table>
+  </div>
+  <div class="finish_date">
+ <h2>Finish date</h2>
+  <form action="/data_finish" method="POST">
+  <label>ID order</label><input type="text" name="id_order">  
+  <label>Date</label><input type="text" name="date_finish">  
+  <button type="submit">Send</button>
+  </form>
+  </div>
+
+<br><br>
+<div class="print_op">
+<h2>Print product to order </h2>
+  <form action="/order_product" method="POST">
+  <label>ID order</label>
+  <input type="text" name="id_Order">
+  <button type="submit">Send</button>
+  <button type="reset">Reset</button>
+
+  </form>
+  </div>
+  <br>
+  <div class="print_comment">
+  <h2>Print comment to order</h2>
+<form action="/print_comment" method="POST">
+<label>ID Order</label><input type="text" name="id_order_com">
+<button type="submit">Print</button>
+</form>
+</div>
+
+</div>

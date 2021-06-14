@@ -1,0 +1,26 @@
+<head>
+  <title>STRADE</title>
+  <link rel="stylesheet" href="style/index_reg.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+</head>
+<div class="sing_in">
+<div class="login"><img src="./img/logo1.svg">
+</div>
+{{message}}
+<form action="/reg_new" method="POST">
+<label>User</label>  
+<input type="text" name="user_name">
+<br><br>
+<label>Password</label>
+<input type="password" name="pass">
+<br>
+<label> Repeat Password </label>
+<input type="password" name="pass1">
+
+
+<br>
+<button type="submit">Send</button>
+<button type="reset">Reset</button>
+</form>
+</div>

@@ -7,15 +7,16 @@ body{display: flex;
 img{
     width: 40vw;
     height: 20vh;
+    margin-left: 5rem;
 }
 .sing_in{
     position: absolute;
     background: rgba(255, 255, 255, 0.3);
     border-radius: 1rem 4rem;
     
-    left: 35rem;
+    left: 20rem;
     top: 10rem;
-    height: 65vh;
+    height: 80vh;
 }
 form{
     margin: 1rem;
@@ -45,4 +46,10 @@ button{
 button:active{
     border-bottom: 0.5rem black solid;
     border-radius: 1rem;
+}
+button:visited{
+    color: black;
+}
+.sing_on{
+    margin-left: 20rem;
 }

@@ -1,0 +1,52 @@
+<head>
+  <title>Ready Product</title>
+  <link rel="stylesheet" href="style/main_style.css">
+  <link rel="stylesheet" href="style/ready_products.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+</head>
+<div class="menu"><img src="./img/logo1.svg" alt="logo">
+  <nav>
+    <ul>
+      <li><a href="\product">Product</a></li>
+      <li><a href="\order">Order</a></li>
+      <li><a href="\customers">Customers</a></li>
+      <li><a href="\ready_products">Ready Products</a></li>
+      <li><a href="\archives">Archives</a></li><br><br>
+      <li><a href="sing_out">Sing out</a></li>
+    </ul>
+  </nav>
+</div>
+<div class="main">
+  <div class="search">
+    <form><input name="str_search" type="text"><select id="type_search_item" name="type_search_item">
+        <option value="id">id</option>
+        <option value="model">model</option>
+        <option value="customers">customers</option>
+      </select><button id="search_button"><img src="./img/transparency.svg" alt="search"></button></form>
+  </div>
+  <h1>Ready Products</h1>
+  <div class="table_product">
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>CUSTOMERS</th>
+        <th>ID_ORDER</th>
+        <th>SEND</th>
+      </tr>
+      {{#each order}}
+      <tr>
+        <td>{{this.id_order}}</td>
+        <td>{{this.name_company}}</td>
+        <td>{{this.id_order}}</td>
+        <td><form action="\ready_products"><button type="submit" onclick="reply_click({{this.id_order}})" >SEND</button></form></td>
+      </tr>
+      {{/each}}
+      
+    </table>
+  </div>
+</div>
+<script type="text/javascript" src="js/Ready_product.js">
+
+</script>
